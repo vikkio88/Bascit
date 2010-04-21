@@ -1,0 +1,33 @@
+BASCIT_1.1.1 README!
+
+BascIT is a simple post-it utility for unix console...
+USAGE:
+	bascit -h            show help file
+	bascit -w 'note'     write note in the notefile '~/.bascitnotes'
+	bascit -r            read the notefile
+	bascit -d            delete the note-file
+	bascit -e 'note.txt' export the notefile in a simple text file
+
+INSTALL
+You can install it simply with the execution of the install file in this directory...
+
+NOTE
+I'm Vikkio the scripter of this little utility...i release it with GNU licence...you cant done what do you want with it...
+
+for contact me:
+
+email:
+vikkio88@yahoo.it
+mywebsite:
+http://vikkio88.altervista.org
+
+Changelog:
+1.1.1 - Corrected some bugs: like undeletable-note
+1.1.1 - Some little script imperfection fixed (switch vars)
+1.1.0 - Bascit now can export the notefile in a simple-plain-text file.
+1.1.0 - Some little scripts imperfection fixed (var $HOME added)
+
+
+...see you soon bye!
+
+

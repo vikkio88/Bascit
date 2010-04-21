@@ -1,0 +1,100 @@
+#!/bin/bash
+# BascIT a bash/post-it utility #
+#         by vikkio88           #
+#    this is a GNU software     #
+
+#Utility variables declaration
+sw1=$1
+sw2=$2
+
+
+function ack_note {
+	#acknowledgement 'note'
+	note=$sw2
+	execute
+}
+
+function execute {
+
+  		case "$sw1" in
+ 		 "-w" ) write_note
+ 		 		exit 0
+        	 ;;
+		 "-r" ) read_note
+		 		exit 0
+		 	;;
+		 "-d" ) delete_note
+		 		exit 0
+		 	;;
+		 "-e") exp_note
+		 		exit 0
+		 	;;
+   		 * ) 	helpme
+   				exit 0
+        	;;
+  		esac
+}
+
+function helpme {
+		echo "     BascIT-1.1.1"
+		echo "*     by vikkio88    *"
+		echo "**********************"
+		echo "DESCRIPTION:"
+		echo "    A simple console/post-it utility"
+		echo " SYNOPTIS:"
+		echo "		bashit [OPTION] '[NOTE]'"
+		echo " OPTIONS:"
+		echo " -w   - write a note in the file"
+		echo " -r   - read the note file"
+		echo " -d   - delete note file"
+		echo " -e   - export the notefile in a text file"
+		echo " EXAMPLES:"
+		echo " write simply a note:"
+		echo "  bascit -w 'text to write'"
+		echo " read the note file:"
+		echo "  bascit -r"
+		echo " delete the note file:"
+		echo "  bascit -d"
+		echo " export note to file"
+		echo "  bascit -e note.txt"
+		exit 0
+}
+
+
+function write_note {
+			date=`date`
+			echo "### $date ###" >> $HOME/.bascitnotes
+			echo "$note" >> $HOME/.bascitnotes
+			echo "####################################" >> $HOME/.bascitnotes
+			echo "Note written in the notefile!"
+}
+
+function read_note {
+	cat $HOME/.bascitnotes || echo "No notefile found!"
+	}
+	
+function delete_note {
+		echo "Are you sure do you want delete the notefile? y/n"
+		read r
+		case "$r" in
+		"Y" ) rm $HOME/.bascitnotes
+			echo "Note deleted!"
+			exit 0
+			;;
+		"y" ) rm $HOME/.bascitnotes
+			echo "Note deleted!"
+			exit 0
+			;;
+		* ) echo "notefile not deleted"
+			;;
+		esac
+}
+
+function exp_note {
+	cat $HOME/.bascitnotes > $HOME/$note
+	echo "Notefile exported in $HOME/$note"
+}
+
+#flusso
+ack_note
+
